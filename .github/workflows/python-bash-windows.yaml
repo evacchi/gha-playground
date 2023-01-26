@@ -17,6 +17,8 @@ jobs:
       - name: Run all wasi-testsuite
         working-directory: python-bash-windows
         run: |
+              echo $BASH
+              export PATH=`dirname $BASH`:$PATH
               python3 script.py
         shell: bash
 
