@@ -1,7 +1,8 @@
 import subprocess
+from shutil import which 
 
 args = [
-    'bash',
+    which('bash'),
     'script.sh',
 ]
 
