@@ -14,10 +14,6 @@ jobs:
       - name: Checkout the playground
         uses: actions/checkout@v3
 
-      - name: delete bash.exe stub on windows
-        if: runner.os == 'Windows'
-        run: del  C:\Windows\System32\bash.exe
-
       - name: Run all wasi-testsuite
         working-directory: python-bash-windows
         run: |
