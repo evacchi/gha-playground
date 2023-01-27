@@ -1,0 +1,14 @@
+name: zig-wasm32-wasi
+on: [pull_request,push]
+
+jobs:
+  test:
+    strategy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: goto-bus-stop/setup-zig@v2
+      - run: zig build-exe -target=wasm32-wasi zig-wasm32-wasi/wasi.zig 
+      - run: curl https://wasmtime.dev/install.sh -sSf | bash
+      - run: wasmtime --dir=zig-wasm32-wasi zig-wasm32-wasi/wasi.wasm /wasi.zig
+
